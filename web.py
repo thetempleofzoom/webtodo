@@ -7,6 +7,7 @@ def add_todo():
     todo = sl.session_state['new_todo']
     todos.append(todo+"\n")
     defs.writing(todos)
+    sl.session_state['new_todo'] = ""
 
 
 sl.title("ToDo App")
