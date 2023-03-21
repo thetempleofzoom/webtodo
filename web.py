@@ -3,11 +3,13 @@ import defs
 
 todos = defs.reading()
 
-def add_todo():
-    todo = sl.session_state['new_todo']
-    todos.append(todo+"\n")
-    defs.writing(todos)
-    sl.session_state['new_todo'] = ""
+def what_todo():
+    if sl.session_state['new_todo']:
+        todo = sl.session_state['new_todo']
+        todos.append(todo+"\n")
+        defs.writing(todos)
+        sl.session_state['new_todo'] = ""
+
 
 
 sl.title("ToDo App")
@@ -24,5 +26,5 @@ for index, todo in enumerate(todos):
         sl.experimental_rerun()
 
 sl.text_input("", placeholder="enter a to-do",
-              on_change= add_todo, key="new_todo")
+              on_change= what_todo, key="new_todo")
 
